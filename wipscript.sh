@@ -4,13 +4,6 @@
 # for example
 # wipscript.sh ~/repo file.sh development
 
-# Problem:
-# Your work may disappear if git-auto-commit-mode
-# is enabled is enabled in more than one buffer
-# imho git reset --soft is to blame
-# your work will go to wip/ branch
-# but will disappear from edit buffer
-
 repo=$1
 file=$2
 branch=$3
@@ -23,7 +16,7 @@ branch_present=`git branch | grep wip/$branch`
 # echo "------"
 
 git add $file
-git commit $file -m $file
+git commit -a -m $file
 
 if [[ $branch_present == *"wip/$branch"* ]]
 then
