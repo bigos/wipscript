@@ -15,6 +15,7 @@ hv=`git rev-parse HEAD`
 git add $file
 git commit $file -m $file
 
+# assumes wip/$branch already exists
 git checkout wip/$branch
 git checkout $branch -- $file
 git commit -am $file
