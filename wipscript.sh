@@ -12,11 +12,21 @@ branch=$3
 cd $repo
 hv=`git rev-parse HEAD`
 
+branch_present=`git show-branch wip/$branch`
+# echo $branch_present
+
 git add $file
 git commit $file -m $file
 
-# assumes wip/$branch already exists
-git checkout wip/$branch
+if [[ $branch_present == *"exists"* ]]
+then
+    echo "in then"
+    git checkout wip/$branch;
+else
+    echo "doing else"
+    git checkout -b wip/$branch;
+fi
+
 git checkout $branch -- $file
 git commit -am $file
 
