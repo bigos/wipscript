@@ -1,10 +1,16 @@
 #! /bin/sh
 
-# usege: wipscript.sh repo file branch
+# usage: wipscript.sh repo file branch
 # for example
 # wipscript.sh ~/repo file.sh development
 
-# echo "Starting"
+# Problem:
+# Your work may disappear if git-auto-commit-mode
+# is enabled is enabled in more than one buffer
+# imho git reset --soft is to blame
+# your work will go to wip/ branch
+# but will disappear from edit buffer
+
 repo=$1
 file=$2
 branch=$3
